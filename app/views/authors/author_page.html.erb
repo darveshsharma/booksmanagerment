@@ -1,0 +1,17 @@
+<%= form_for @author do |f| %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name%>
+    <%= f.label :books_count, "Total Books" %>
+    <%= f.text_field :books_count %>
+    <%= f.fields_for :books do |book| %>
+        <p>
+            Book Name:<br>
+            <%= book.text_area :name %>
+        </p>
+        <p>
+            Book Cost:<br>
+            <%= book.text_area :price %>
+        </p>
+      <% end %>
+    <%= f.submit "Create" , id: "create" %>
+  <% end %>

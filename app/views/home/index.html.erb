@@ -1,0 +1,21 @@
+
+<% name = current_user.present? ? current_user.email : 'Stranger' %>
+<% if user_signed_in? %>
+<% if current_user.authors.present? %>
+<table style="width:100%">    
+<tr>
+        <th>Author Name</th>
+        <th>Book Count</th>
+    </tr>
+    <% current_user.authors.each do |author| %>
+    <tr>
+        <td><%= author.name %></td>
+        <td><%= author.books_count %></td>
+    <% end %>
+    </table>
+    <%= link_to 'Add More Author', '/author', class: 'nav-link' %>
+    <% else %>
+    <h1> Not Added any authors till now use "Add Author" Button </h1>
+    <%= link_to 'Add Author', '/author', class: 'nav-link' %>
+    <% end %>
+<%end%>
